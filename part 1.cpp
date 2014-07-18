@@ -25,7 +25,7 @@ RegCloseKey(m_regkey);
 HKEY hKey;  
 if(RegOpenKeyEx(HKEY_LOCAL_MACHINE,L"Software\\Microsoft\\Windows\\CurrentVersion\\Run",0,KEY_ALL_ACCESS,&hKey)==ERROR_SUCCESS)  
 {  
-    RegDeleteValue(hKey,L"程序名称");  
+    RegDeleteValue(hKey,L"程序名称");   
     RegCloseKey(hKey);  
 }  
   
