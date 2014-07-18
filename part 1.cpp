@@ -376,4 +376,22 @@ image.Load(fileName);
 image.Draw(hDC,rect_frame);  
 ReleaseDC(pDC);//释放picture控件的DC 
 
-/*20. */
+/*20. 在doc里通过GetFirstViewPosition();来遍历所有的视图*/
+//遍历所有的视图  
+    POSITION pos = GetFirstViewPosition();  
+  
+  
+    while (pos != NULL)  
+    {  
+        CView* pView=GetNextView(pos);     
+  
+  
+        if( pView->IsKindOf(RUNTIME_CLASS(testView)))//这里的testView就是要做操作的视图的名字  
+        {  
+            CVehicleInpectionStickersDetectionDemoView *myView = (CVehicleInpectionStickersDetectionDemoView*)pView;  
+  
+  
+           myView->OnUpdate();//执行一个该视图中的函数，函数的内容就是修改视图中控件的一些内容来判断是否获得视图指针成功  
+        }  
+          
+    }   
