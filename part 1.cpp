@@ -1,5 +1,4 @@
-@@ -0,0 +1,360 @@
-/*
+
 1.改变当前目录到EXE所在的目录
 在VC++开发环境中直接运行程序，当前目录不是EXE所在的目录，这样会造成一些麻烦，比如使用相对路径打开文件。使用以下代码将当前目录设成EXE所在的目录：*/
 void ChangeCurDirToExe()  
@@ -358,6 +357,22 @@ m_strConfigDir = m_strAppDir + _T("Config\\");
 CString filename = pJobObj->GetFilePath();
 ShellExecute(NULL, NULL,_T("explorer"), _T("/select, ")+filename, NULL,SW_SHOW);
 
-/*19. */
- No newline at end of file
+/*19. MFC中使用CImage显示缩略图的方法*/
+CWnd* pWnd;  
+pWnd=GetDlgItem(IDC_IMAGE1);  
+CDC* pDC=pWnd->GetDC();  
+HDC hDC = pDC->m_hDC;  
+  
+CRect rect_frame;  
+CImage image;  
+pWnd->GetClientRect(&rect_frame);  
+image.Load(fileName);  
+  
+  
+::SetStretchBltMode(hDC,HALFTONE);  
+::SetBrushOrgEx(hDC,0,0,NULL);  
+  
+image.Draw(hDC,rect_frame);  
+ReleaseDC(pDC);//释放picture控件的DC 
 
+/*20. */
